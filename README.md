@@ -24,9 +24,11 @@ In worst case scenario of the voice being unrecognized, it displays a particular
 By taking into account the effect of background noise on the speech recognition component, we use the adjust_for_ambient_noise() function to act as a filter.
 
 The speech recognition component takes into account the three variables that trigger different kinds of action, which are the wake word, sleep word and alarm word. 
-Once the speech is processed, it checks for the presence of these words to trigger their respective actions.
+Once the speech is processed, it checks for the presence of these words to trigger their respective actions. The sleep word is used to stop the assistant and return to intial state, it is 
+triggered by saying stop talking.
 
 Using the threading library, we assign the alarm triggering and the alarm sounds in a different threads(background by setting the daemon as True), alongside updating the session state of streamlit.
+(Streamlit does not allow multi-threading, as such the threads work sequentially.) Therefore, there is a stop in the response from the assistant after the alarm is set and the alarm is triggered.
 
 The weather dashboard-
 It is a still work in progress. It is set of functions that use api calls to open source website that offers weather data. Currently the city location is set as default chennai.
