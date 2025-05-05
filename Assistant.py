@@ -1,8 +1,7 @@
 import streamlit as st
 import speech_recognition as sr
-import pyttsx3 as tts
+
 recognizer = sr.Recognizer()
-tts = tts.init()
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,7 +12,6 @@ client = OpenAI()
 import requests
 import os
 import datetime
-import time
 from playsound import playsound
 import threading
 from datetime import *
@@ -87,11 +85,11 @@ def talker(topic):
     But you do not have the ability to set the alarm itself. If the command is unclear, ask again."""},
     {"role": "user", "content": topic},
     ],
-    temperature=0.8,   # More creative!
-    max_tokens=500,    # Longer story
+    temperature=0.8,   
+    max_tokens=500,    
     top_p=1,
-    frequency_penalty=0.3,  # Less repetitive
-    presence_penalty=0.6    # Encourages talking about new topics
+    frequency_penalty=0.3,  
+    presence_penalty=0.6   
     )
     return response.choices[0].message.content
 
@@ -153,4 +151,4 @@ with sr.Microphone() as mic:
 
 
 #print(response)
-#print(response.choices\[0].message.content)
+#print(response.choices[0].message.content)
