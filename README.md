@@ -29,10 +29,12 @@ triggered by saying stop talking.
 
 Using the threading library, we assign the alarm triggering and the alarm sounds in a different threads(background by setting the daemon as True), alongside updating the session state of streamlit.
 (Streamlit does not allow multi-threading, as such the threads work sequentially.) Therefore, there is a stop in the response from the assistant after the alarm is set and the alarm is triggered.
+So in order to fully utilize the multi-threading feature make sure to execute the either terminal without the streamlit component or create a dedicated frontend component.
 
 The weather dashboard-
-It is a still work in progress. It is set of functions that use api calls to open source website that offers weather data. Currently the city location is set as default chennai.
+It is set of functions that use api calls to open source website that offers weather data. Currently the city location is set as default chennai.
 Since streamlit does not allow multi-threading, any changes to the default value of the weather would cause the program to be rerun in streamlit, since it follows a sequence execution.
+Therefore, execute the code without the streamlit component or develope a dedicated frontend component using traditional methods to fully utilize the multi-threading feature effectively.
 
 The values for the apis are stored in an .env (environment variables), which is accessed with the help of the load_dotenv() from the dotenv library.
 
